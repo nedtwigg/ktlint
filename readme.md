@@ -133,6 +133,31 @@ $ ktlint -R com.github.username:rulseset:master-SNAPSHOT
 To check code style - `mvn antrun:run@ktlint` (it's also bound to `mvn verify`).  
 To run formatter - `mvn antrun:run@ktlint-format`.   
 
+#### ... with Gradle via [Spotless](https://github.com/diffplug/spotless/tree/master/plugin-gradle)
+
+> build.gradle
+
+```groovy
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.1.0"
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.1" }
+}
+
+spotless {
+    kotlin {
+        ktlint('0.5.0')
+    }
+}
+```
+
+To check code style - `gradlew spotlessCheck` (it's also bound to `gradle check`).  
+To run formatter - `gradlew spotlessApply`.
+Spotless supports fast up-to-date checks and formatting for other filetypes in your project as well.
+
 #### ... with [Gradle]()
 
 > build.gradle
